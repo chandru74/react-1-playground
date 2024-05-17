@@ -1,0 +1,23 @@
+React => is javascript library.
+
+CDN - Content delivery network
+
+React.createElement("h1", {}, "Hellow World from React!") == returns a javascript object
+
+npm == package manager for javascript programming langulage
+
+package.json = configuration file npm packages
+
+bundler = bundles the application to ship into production.  Webpack, parcel,
+
+npx parcel index.html build and start server
+
+#parcel -build, start server, HMR-hot module replacement
+uses file watching algorithm written in C++
+faster build - due to caching
+
+REACT Components
+1 class based Components == old way 
+2 functional based components = current standard
+
+Component Composition => composing component using multiple component
