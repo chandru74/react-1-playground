@@ -2,6 +2,7 @@ import CardComponent from "./CardComponent";
 import resList from "../utils/mock-data";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () =>{
   const [restaurantList, setrestaurantList] = useState([]);
@@ -12,6 +13,10 @@ const Body = () =>{
   useEffect(() => {
     fetchData();
   },[])
+
+  const isOnline = useOnlineStatus();
+
+  if(isOnline === false) return <h1>Looks like you are offline!!. Please check your internet connection.</h1>
 
   const fetchData = async () => {
     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.956924&lng=77.701127&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
