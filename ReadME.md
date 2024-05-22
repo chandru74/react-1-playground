@@ -13,3 +13,8 @@ useEffect =>
 
 
 Virtual DOM - Representation of actual DOM object(normal JS object)
+
+
+Class Based components
+
+A class which extends to React.Component 
