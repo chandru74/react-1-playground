@@ -18,17 +18,17 @@ const RestaurantMenu = () => {
     console.log(itemCards)
 
     return (
-        <div className="restaurant-menu">
-            <h1>{name}</h1>
+        <div className="flex flex-col items-center">
+            <h1 className="font-bold text-lg mb-2">{name}</h1>
 
-            <p>{cuisines.join(",")} - {costForTwoMessage}</p>
+            <p className="mb-4">{cuisines.join(",")} - {costForTwoMessage}</p>
 
-            <h2>Menu</h2>
+            <h2  className="font-bold mb-2">Menu</h2>
             <ul>
                 {
                     itemCards?.map(item => (
-                        <li key={item.card.info.id}>
-                            {item.card.info.name} - {item.card.info.price/100}
+                        <li key={item.card.info.id} className="py-2">
+                            {item.card.info.name} - ₹{item.card.info.price/100}
                         </li>
                     ))
                 }
