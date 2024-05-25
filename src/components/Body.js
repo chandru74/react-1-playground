@@ -1,15 +1,18 @@
 import CardComponent from "./CardComponent";
 import resList from "../utils/mock-data";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { vegLabelComponent } from "./CardComponent";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [restaurantList, setrestaurantList] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+
+  const {loggedInUser, setUserName} = useContext(UserContext);
 
   const VegCardComponent = vegLabelComponent(CardComponent);
 
@@ -54,6 +57,11 @@ const Body = () => {
               const filteredList = restaurantList.filter(res => res.info.avgRating > 4.2)
               setFilteredRestaurants(filteredList)
             }}>Top Restaurants</button>
+        </div>
+        <div>
+          <label>Username</label>
+          <input type="text" className="border border-black p-2 m-2 rounded-lg" 
+          value={loggedInUser} onChange={(e) => setUserName(e.target.value)}/>
         </div>
       </div>
       <div className='flex flex-wrap'>
