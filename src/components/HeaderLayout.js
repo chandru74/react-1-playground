@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
 
 export const HeaderLayout =() => {
+
+    const {loggedInUser} = useContext(UserContext);
     return (
         <div className='flex justify-between m-4 shadow-lg bg-lime-100'>
             <div className='logo-container'>
@@ -22,6 +26,7 @@ export const HeaderLayout =() => {
                         <Link to='/grocery'>Grocery</Link>
                     </li>
                     <li className="px-4">Cart</li>
+                    <li className="font-bold">{loggedInUser}</li>
                 </ul>
             </div>
 
