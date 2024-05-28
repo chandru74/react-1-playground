@@ -1,8 +1,16 @@
 import React from 'react';
 import { CDN_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../utils/cartSlice';
 
 const CategoryList = (props) => {
     const {menuItems} = props;
+
+    const dispatch = useDispatch();
+
+    const handleClick = (item) => {
+        dispatch(addItem(item));
+    }
     return (
         menuItems.map(menuItem => (
             <div key={menuItem.card.info.id} className='flex m-2 justify-between py-4 border-b border-gray-400'>
@@ -12,7 +20,8 @@ const CategoryList = (props) => {
             </div>
             <div className='w-3/12 relative'>
                 <img src={CDN_URL + menuItem.card.info.imageId} alt="Menu image" className='w-full'/>
-                <button className='px-2 bg-white text-green-500 rounded-lg border-green-500 border relative bottom-6 left-16'>Add+</button>
+                <button className='px-2 bg-white text-green-500 rounded-lg border-green-500 border relative bottom-6 left-16'
+                onClick={() => handleClick(menuItem)}>Add+</button>
             </div>
         </div>
         ))
