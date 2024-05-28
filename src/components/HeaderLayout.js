@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
 import UserContext from "../utils/UserContext";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 export const HeaderLayout =() => {
 
     const {loggedInUser} = useContext(UserContext);
+
+    const cartItems = useSelector((store) => store.cart.items);
+    console.log(cartItems)
     return (
         <div className='flex justify-between m-4 shadow-lg bg-lime-100'>
             <div className='logo-container'>
@@ -25,7 +29,9 @@ export const HeaderLayout =() => {
                     <li className="px-4">
                         <Link to='/grocery'>Grocery</Link>
                     </li>
-                    <li className="px-4">Cart</li>
+                    <li className="px-4 font-bold">
+                        <Link to="/cart">Cart - ({cartItems.length} items)</Link>
+                        </li>
                     <li className="font-bold">{loggedInUser}</li>
                 </ul>
             </div>
